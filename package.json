@@ -15,7 +15,7 @@
     "core-js": "^3.8.2",
     "darkreader": "^4.9.26",
     "dayjs": "^1.10.3",
-    "element-ui": "^2.14.1",
+    "element-ui": "^2.15.0",
     "gitalk": "^1.7.0",
     "js-cookie": "^2.2.1",
     "nprogress": "^0.2.0",

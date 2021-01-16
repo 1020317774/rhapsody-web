@@ -1,0 +1,15 @@
+.rb-card {
+    border: none;
+    border-radius: 3px;
+    /*box-shadow: 5px 5px 16px 0 rgba(0, 0, 0, 0.13);*/
+    box-shadow: 0 -0.5em 0em -1.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.rb-card:hover {
+    transform: scale(1.03);
+}
+

@@ -12,7 +12,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "buefy": "^0.9.4",
-    "core-js": "^3.8.2",
+    "core-js": "^3.9.0",
     "darkreader": "^4.9.26",
     "dayjs": "^1.10.3",
     "element-ui": "^2.14.1",

@@ -1,9 +1,9 @@
 <template>
   <div class="columns py-6">
     <div class="column is-half is-offset-one-quarter">
-      <el-card shadow="never">
-        <div slot="header" class="has-text-centered has-text-weight-bold">
-          新用户入驻
+      <el-card shadow="never" class="content">
+        <div slot="header" class="has-text-centered">
+          <h5>新用户入驻</h5>
         </div>
         <div>
           <el-form

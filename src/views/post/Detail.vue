@@ -10,7 +10,7 @@
             <span>发布者：{{ topicUser.alias }}</span>
             <el-divider direction="vertical" />
             首发：
-            <span>{{ dayjs(topic.createTime).format('YYYY/MM/DD HH:mm:ss') }}</span>
+            <span>{{ dayjs(topic.createTime).format('YYYY-MM-DD HH:mm:ss') }}</span>
             <el-divider direction="vertical" />
             <span>查看：{{ topic.view }}</span>
           </div>
@@ -115,8 +115,8 @@ export default {
       clientID: 'd69d7176a6b16783fd8c',
       clientSecret: 'fc5ed29b8aaaaaf2f449a74092197b0fe1c5c69e',
       repo: 'git-comments',
-      owner: '1020317774',
-      admin: ['1020317774'],
+      owner: 'haoyu21',
+      admin: ['haoyu21'],
       distractionFreeMode: false
     })
     gitalk.render('gitalk-container')

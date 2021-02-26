@@ -41,6 +41,7 @@ service.interceptors.response.use(
   // 接收到响应数据并成功后的一些共有的处理，关闭loading等
   response => {
     const res = response.data
+    console.log(res)
     // 如果自定义代码不是200，则将其判断为错误。
     if (res.code !== 200) {
       // 50008: 非法Token; 50012: 异地登录; 50014: Token失效;
@@ -52,12 +53,12 @@ service.interceptors.response.use(
           type: 'warning',
           center: true
         }).then(() => {
-          window.location.href = '#/login'
+          window.location.href = '/login'
         })
       } else { // 其他异常直接提示
         Message({
           showClose: true,
-          message: '⚠' + res.message || 'Error',
+          message: '💘' + res.message || 'Error',
           type: 'error',
           duration: 3 * 1000
         })
@@ -74,7 +75,7 @@ service.interceptors.response.use(
       showClose: true,
       message: error.message,
       type: 'error',
-      duration: 5 * 1000
+      duration: 3 * 1000
     })
     return Promise.reject(error)
   }

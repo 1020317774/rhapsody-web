@@ -16,30 +16,30 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" href="/">
-            主页
+            🌐主页
           </a>
           <a class="navbar-item" href="/activities">
-            活动
+            🎉活动
           </a>
           <a class="navbar-item" href="/journey">
-            晒图
+            ⛱晒图
           </a>
 
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              更多
+              🔰更多
             </a>
 
             <div class="navbar-dropdown">
               <a class="navbar-item">
-                关于
+                💖关于
               </a>
               <a class="navbar-item" href="tencent://message/?Menu=yes&uin=1020317774">
-                联系
+                🕗联系
               </a>
               <hr class="navbar-divider">
               <a class="navbar-item">
-                反馈
+                👾反馈
               </a>
             </div>
           </div>

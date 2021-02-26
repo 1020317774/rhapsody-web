@@ -31,7 +31,7 @@
               <div class="media-content">
                 <div class="content ellipsis is-ellipsis-1">
                   <el-tooltip class="item" effect="dark" :content="item.title" placement="top">
-                    <router-link :to="{ name: 'post-detail', params: { id: item.id } }">
+                    <router-link :to="{ name: 'PostDetail', params: { id: item.id } }">
                       {{ item.title }}
                     </router-link>
                   </el-tooltip>

@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function getBillboard() {
+export function getBulletin() {
   return request(({
-    url: '/billboard/show',
+    url: '/bulletin/show',
     method: 'get'
   }))
 }

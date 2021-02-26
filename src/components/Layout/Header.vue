@@ -1,154 +1,105 @@
 <template>
   <header class="header has-background-white has-text-black">
-    <b-navbar
-      class="container is-white"
-      :fixed-top="true"
-    >
-      <template slot="brand">
-        <b-navbar-item tag="div">
-          <img src="https://s3.ax1x.com/2020/11/30/DR23FO.png" alt="logo">
-        </b-navbar-item>
+    <nav class="navbar container" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="https://s3.ax1x.com/2020/11/30/DR23FO.png" alt="logo" width="80" height="52">
+        </a>
 
-        <b-navbar-item
-          class="is-hidden-desktop"
-          tag="router-link"
-          :to="{ path: '/' }"
-        >
-          主页
-        </b-navbar-item>
-        <b-navbar-item
-          class="is-hidden-desktop"
-          tag="router-link"
-          :to="{ path: '/activities' }"
-        >
-          活动
-        </b-navbar-item>
-        <b-navbar-item
-          class="is-hidden-desktop"
-          tag="router-link"
-          :to="{ path: '/journey' }"
-        >
-          穷游
-        </b-navbar-item>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </a>
+      </div>
 
-      </template>
-      <template slot="start">
-        <b-navbar-item
-          tag="router-link"
-          :to="{ path: '/' }"
-        >
-          🌐 主页
-        </b-navbar-item>
-        <b-navbar-item
-          tag="router-link"
-          :to="{ path: '/activities' }"
-        >
-          🎉 活动
-        </b-navbar-item>
-        <b-navbar-item
-          tag="router-link"
-          :to="{ path: '/journey' }"
-        >
-          ✈ 旅行
-        </b-navbar-item>
-        <b-navbar-item
-          tag="a"
-          href="tencent://message/?Menu=yes&uin=1020317774"
-        >
-          👾 反馈
-        </b-navbar-item>
-        <!--<b-navbar-dropdown label="💁 帮助">-->
-        <!--  <b-navbar-item tag="router-link" :to="{ path: '/help/feedback' }">-->
-        <!--    🙋 问题反馈-->
-        <!--  </b-navbar-item>-->
-        <!--  <hr class="dropdown-divider"/>-->
-        <!--  <b-navbar-item tag="router-link" :to="{ path: '/help/contact' }">-->
-        <!--    ☎ 联系我们-->
-        <!--  </b-navbar-item>-->
-        <!--</b-navbar-dropdown>-->
-      </template>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">
+            主页
+          </a>
+          <a class="navbar-item" href="/activities">
+            活动
+          </a>
+          <a class="navbar-item" href="/journey">
+            晒图
+          </a>
 
-      <template slot="end">
-        <b-navbar-item tag="div">
-          <b-field position="is-centered">
-            <b-input
-              v-model="searchKey"
-              class="s_input"
-              width="80%"
-              placeholder="搜索帖子、标签和用户"
-              rounded
-              clearable
-              @keyup.enter.native="search()"
-            />
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              更多
+            </a>
 
-            <p class="control">
-              <b-button
-                class="is-info"
-                @click="search()"
-              >检索
-              </b-button>
-            </p>
-          </b-field>
-        </b-navbar-item>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                关于
+              </a>
+              <a class="navbar-item" href="tencent://message/?Menu=yes&uin=1020317774">
+                联系
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                反馈
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item">
+            <div class="field has-addons">
+              <div class="control">
+                <label>
+                  <input v-model="searchKey" class="input" type="text" style="width: 100%;height: 100%" placeholder="关键词">
+                </label>
+              </div>
+              <div class="control">
+                <a class="button is-info" @click="search()">
+                  搜索
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <b-navbar-item tag="div">
+        <div class="navbar-end">
           <b-switch
             v-model="darkMode"
             passive-type="is-warning"
             type="is-dark"
           >
-            {{ darkMode ? "夜" : "日" }}
+            {{ darkMode ? "夜" : "昼" }}
           </b-switch>
-        </b-navbar-item>
-
-        <b-navbar-item
-          v-if="token == null || token === ''"
-          tag="div"
-        >
-          <div class="buttons">
-            <b-button
-              class="is-light"
-              tag="router-link"
-              :to="{ path: '/register' }"
-            >
-              注册
-            </b-button>
-            <b-button
-              class="is-light"
-              tag="router-link"
-              :to="{ path: '/login' }"
-            >
-              登录
-            </b-button>
+          <div v-if="token == null || token === ''" class="navbar-item">
+            <div class="buttons">
+              <router-link :to="{path:'register'}" class="button is-primary">
+                <strong>注册</strong>
+              </router-link>
+              <router-link :to="{path:'login'}" class="button is-light">
+                登录
+              </router-link>
+            </div>
           </div>
-        </b-navbar-item>
+          <div v-else class="navbar-menu">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                {{ user.alias }}
+              </a>
 
-        <b-navbar-dropdown
-          v-else
-          :label="user.alias"
-        >
-          <b-navbar-item
-            tag="router-link"
-            :to="{ path: `/member/${user.username}/home` }"
-          >
-            🧘 个人中心
-          </b-navbar-item>
-          <hr class="dropdown-divider">
-          <b-navbar-item
-            tag="router-link"
-            :to="{ path: `/member/${user.username}/setting` }"
-          >
-            ⚙ 设置中心
-          </b-navbar-item>
-          <hr class="dropdown-divider">
-          <b-navbar-item
-            tag="a"
-            @click="logout"
-          > 👋 退出登录
-          </b-navbar-item>
-        </b-navbar-dropdown>
-      </template>
-    </b-navbar>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" @click="center(user.username)">
+                  用户中心
+                </a>
+                <a class="navbar-item" @click="setting(user.username)">
+                  设置中心
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" @click="logout">
+                  退出
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
 </template>
 
@@ -190,6 +141,12 @@ export default {
     }
   },
   methods: {
+    center(username) {
+      this.$router.push({ name: 'UserCenter', params: { username: username }})
+    },
+    setting(username) {
+      this.$router.push({ name: 'UserSettings', params: { username: username }})
+    },
     async logout() {
       this.$store.dispatch('user/logout').then(() => {
         this.$message.info('退出登录成功')
@@ -200,9 +157,9 @@ export default {
     },
     search() {
       if (this.searchKey.trim() === null || this.searchKey.trim() === '') {
-        this.$message.info({
+        this.$message.warning({
           showClose: true,
-          message: '请输入关键字搜索！',
+          message: '请输入关键字！',
           type: 'warning'
         })
         return false

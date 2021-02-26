@@ -145,7 +145,7 @@ export default {
             const { data } = response
             setTimeout(() => {
               this.$router.push({
-                name: 'post-detail',
+                name: 'PostDetail',
                 params: { id: data.id }
               })
             }, 800)

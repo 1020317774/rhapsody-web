@@ -58,7 +58,7 @@ const routes = [
   },
   // 详情
   {
-    name: 'post-detail',
+    name: 'PostDetail',
     path: '/post/:id',
     component: () => import('@/views/post/Detail')
   },
@@ -74,15 +74,15 @@ const routes = [
   // ------------------------用户--------------------------
   // 用户主页
   {
-    name: 'user',
+    name: 'UserCenter',
     path: '/member/:username/home',
     component: () => import('@/views/user/Profile'),
     meta: { title: '主页' }
   },
   // 用户设置
   {
-    name: 'user-setting',
-    path: '/member/:username/setting',
+    name: 'UserSettings',
+    path: '/member/:username/settings',
     component: () => import('@/views/user/Setting'),
     meta: { title: '设置' }
   },
@@ -130,7 +130,7 @@ const routes = [
     name: 'search',
     path: '/search',
     component: () => import('@/views/Search'),
-    meta: { title: '检索' }
+    meta: { title: '搜索' }
   },
 
   // 活动洽谈
@@ -178,8 +178,8 @@ VueRouter.prototype.push = function push(location) {
 }
 
 const router = new VueRouter({
-  mode: 'hash',
-  // mode: 'history',
+  // mode: 'hash',
+  mode: 'history',
   base: '/',
   scrollBehavior: () => ({ y: 0 }),
   routes

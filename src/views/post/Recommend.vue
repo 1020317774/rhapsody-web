@@ -5,7 +5,7 @@
     </div>
     <div>
       <p v-for="(item,index) in recommend" :key="index" :title="item.title" class="block ellipsis is-ellipsis-1">
-        <router-link :to="{name:'post-detail',params: { id: item.id }}">
+        <router-link :to="{name:'PostDetail',params: { id: item.id }}">
           <span v-if="index<9" class="tag">
             0{{ parseInt(index) + 1 }}
           </span>

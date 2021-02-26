@@ -1,37 +1,31 @@
 <template>
   <div>
-    <div class="mb-5">
-      <Header></Header>
-    </div>
+    <Header />
 
-    <div class="container context">
+    <div class="container my-4">
       <transition
         name="el-fade-in-linear"
         mode="out-in"
         appear
       >
-        <router-view :key="this.$route.fullPath"></router-view>
+        <router-view :key="this.$route.fullPath" />
       </transition>
     </div>
 
-    <div>
-      <Footer></Footer>
-    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from "@/components/Layout/Header";
-import Footer from "@/components/Layout/Footer";
+import Header from '@/components/Layout/Header'
+import Footer from '@/components/Layout/Footer'
 
 export default {
-  name: "App",
-  components: { Header, Footer },
-};
+  name: 'App',
+  components: { Header, Footer }
+}
 </script>
 
 <style scoped>
-.container {
-  min-height: 500px;
-}
+
 </style>

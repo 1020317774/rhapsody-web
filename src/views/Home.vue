@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="box">🔔 {{ billboard.content }}</div>
+    <p v-if="bulletin!=null" class="box">🔔站内公告：{{ bulletin.content }}</p>
 
     <!--面板-->
     <Panel />
@@ -24,14 +24,14 @@ import PostList from '@/views/post/Index'
 import Panel from '@/views/home/Panel'
 import { activeUser } from '@/api/user'
 
-import { getBillboard } from '@/api/billboard'
+import { getBulletin } from '@/api/bulletin'
 
 export default {
   name: 'Home',
   components: { TopicList: PostList, CardBar, Panel },
   data() {
     return {
-      billboard: '',
+      bulletin: '',
       active: {
         user: this.$route.query.user,
         code: this.$route.query.code
@@ -59,9 +59,9 @@ export default {
       }
     },
     async fetchBillboard() {
-      getBillboard().then((value) => {
+      getBulletin().then((value) => {
         const { data } = value
-        this.billboard = data
+        this.bulletin = data
       })
     }
   }

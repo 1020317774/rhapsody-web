@@ -3,24 +3,18 @@
     <!--文章详情-->
     <div class="column is-three-quarters">
       <!--主题-->
-      <el-card
-        class="box-card"
-        shadow="never"
-      >
-        <div
-          slot="header"
-          class="has-text-centered"
-        >
-          <p class="is-size-5 has-text-weight-bold">{{ topic.title }}</p>
-          <div class="has-text-grey is-size-7 mt-3">
-            <span>{{ dayjs(topic.createTime).format('YYYY/MM/DD HH:mm:ss') }}</span>
-            <el-divider direction="vertical" />
+      <el-card shadow="never">
+        <div slot="header">
+          <h6 class="title is-5 ellipsis is-ellipsis-1">{{ topic.title }}</h6>
+          <div class="has-text-grey">
             <span>发布者：{{ topicUser.alias }}</span>
+            <el-divider direction="vertical" />
+            首发：
+            <span>{{ dayjs(topic.createTime).format('YYYY/MM/DD HH:mm:ss') }}</span>
             <el-divider direction="vertical" />
             <span>查看：{{ topic.view }}</span>
           </div>
         </div>
-
         <!--Markdown-->
         <div id="preview" />
 

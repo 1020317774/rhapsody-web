@@ -71,7 +71,8 @@ export default {
       ruleForm: {
         title: '', // 标题
         tags: [], // 标签
-        content: {} // 内容
+        content: {}, // 内容
+        html: {} // Html
       },
       rules: {
         title: [
@@ -141,6 +142,7 @@ export default {
             return false
           }
           this.ruleForm.content = this.contentEditor.getValue()
+          this.ruleForm.html = this.contentEditor.getHTML()
           post(this.ruleForm).then((response) => {
             const { data } = response
             setTimeout(() => {

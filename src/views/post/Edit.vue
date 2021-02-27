@@ -12,19 +12,19 @@
           ><span><i class="fa fa fa-book"> 主题 / 更新主题</i></span></div>
           <div>
             <el-form
-              :model="topic"
               ref="topic"
+              :model="topic"
               class="demo-topic"
             >
               <el-form-item prop="title">
                 <el-input
                   v-model="topic.title"
                   placeholder="输入新的主题名称"
-                ></el-input>
+                />
               </el-form-item>
 
               <!--Markdown-->
-              <div id="vditor"></div>
+              <div id="vditor" />
 
               <el-form-item class="mt-3">
                 <el-button
@@ -43,25 +43,25 @@
 </template>
 
 <script>
-import {getTopic, update} from "@/api/post";
+import { getTopic, update } from '@/api/post'
 import Vditor from 'vditor'
-import "vditor/dist/index.css"
+import 'vditor/dist/index.css'
 
 export default {
-  name: "TopicEdit",
+  name: 'TopicEdit',
   components: {},
-  data () {
+  data() {
     return {
       topic: {},
-      tags: {},
+      tags: {}
     }
   },
-  created () {
-    this.fetchTopic();
+  created() {
+    this.fetchTopic()
   },
   methods: {
-    renderMarkdown (md) {
-      this.contentEditor = new Vditor("vditor", {
+    renderMarkdown(md) {
+      this.contentEditor = new Vditor('vditor', {
         height: 460,
         placeholder: '输入要更新的内容',
         preview: {
@@ -73,32 +73,32 @@ export default {
         }
       })
     },
-    fetchTopic () {
+    fetchTopic() {
       getTopic(this.$route.params.id).then(value => {
         this.topic = value.data.topic
         this.tags = value.data.tags
         this.renderMarkdown(this.topic.content)
-      });
+      })
     },
-    handleUpdate: function () {
-      this.topic.content = this.contentEditor.getValue();
+    handleUpdate: function() {
+      this.topic.content = this.contentEditor.getValue()
       update(this.topic).then(response => {
         const { data } = response
         console.log(data)
         setTimeout(() => {
           this.$router.push({
-            name: "PostDetail",
-            params: { id: data.id },
+            name: 'PostDetail',
+            params: { id: data.id }
           })
-        }, 800);
-      });
+        }, 800)
+      })
     },
 
-    resetForm (formName) {
-      this.$refs[formName].resetFields();
-      this.contentEditor.setValue("");
-      this.tags = "";
-    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
+      this.contentEditor.setValue('')
+      this.tags = ''
+    }
   }
 }
 </script>

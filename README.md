@@ -32,9 +32,11 @@
 ……
 
 ## 细节预览
-![](./docs/preview/home.png)
+
 ![](./docs/preview/login.png)
 ![](./docs/preview/register.png)
+![](./docs/preview/home.png)
+![](./docs/preview/journey.png)
 ![](./docs/preview/token.png)
 ![](./docs/preview/dark.png)
 

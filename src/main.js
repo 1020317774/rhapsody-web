@@ -11,8 +11,9 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // 导相对时间插件
 import relativeTime from 'dayjs/plugin/relativeTime'
-// 国际化
-import 'dayjs/locale/zh-cn'
+import calendar from 'dayjs/plugin/calendar'
+import updateLocale from 'dayjs/plugin/updateLocale'
+
 // permission control
 import '@/permission'
 // 引入自定义全局样式
@@ -31,11 +32,13 @@ Vue.use(Buefy)
 Vue.use(ElementUI)
 
 const dayjs = require('dayjs')
-
+// 国际化
+require('dayjs/locale/zh-cn')
 // 相对时间插件
 dayjs.extend(relativeTime)
-
-dayjs.locale('zh-cn') // use locale globally
+dayjs.extend(calendar)
+dayjs.extend(updateLocale)
+dayjs.locale('zh-cn')
 dayjs().locale('zh-cn').format() // use locale in a specific instance
 
 Vue.prototype.dayjs = dayjs// 可以全局使用dayjs

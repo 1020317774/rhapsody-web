@@ -21,19 +21,19 @@
                     {{ item.title }}
                   </router-link>
                 </div>
-                <div class="mt-1  ellipsis is-ellipsis-2">
-                  {{ item.html }}
+                <div class="mt-1 ellipsis is-ellipsis-2 has-text-grey" style="min-height: 33px">
+                  {{ item.content }}
                 </div>
                 <div class="has-text-grey mt-3">
-                  <i class="fa fa-user"></i>
+                  <i class="fa fa-user"></i>&nbsp;
                   <router-link class="has-text-grey" :to="{ name:'UserCenter',params: {username:item.username} }">
                     {{ item.alias }}
                   </router-link>
                   <el-divider direction="vertical" />
-                  <i class="fa fa-calendar-times-o"></i>
-                  <span>{{ dayjs(item.createTime).format("YYYY-MM-DD") }}</span>
+                  <i class="fa fa-calendar-times-o"></i>&nbsp;
+                  <span>{{ dayjs(item.createTime).calendar() }}</span>
                   <el-divider direction="vertical" />
-                  <i class="fa fa-tags"></i>
+                  <i class="fa fa-tags"></i>&nbsp;
                   <span
                     v-for="(tag, index) in item.tags"
                     :key="index"

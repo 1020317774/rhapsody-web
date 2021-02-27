@@ -7,12 +7,12 @@
         <div slot="header">
           <h6 class="title is-5 ellipsis is-ellipsis-1">{{ topic.title }}</h6>
           <div class="has-text-grey">
-            <span>发布者：{{ topicUser.alias }}</span>
-            <el-divider direction="vertical" />
-            首发：
-            <span>{{ dayjs(topic.createTime).format('YYYY-MM-DD HH:mm:ss') }}</span>
-            <el-divider direction="vertical" />
-            <span>查看：{{ topic.view }}</span>
+            <span>{{ topicUser.alias }}</span>
+            <span class="mx-2">·</span>
+            <span>发布于{{ dayjs(topic.createTime).calendar() }}</span>
+            <span class="mx-2">·</span>
+            <span>浏览:{{ topic.view }}</span>
+            <span v-if="topic.modifyTime!=null && topic.createTime !== topic.modifyTime"><span class="mx-2">·</span>修改于{{ dayjs(topic.modifyTime).format('D/M/YY H:M:s') }}</span>
           </div>
         </div>
         <!--Markdown-->

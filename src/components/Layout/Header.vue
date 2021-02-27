@@ -3,7 +3,7 @@
     <nav class="navbar container" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <img src="https://s3.ax1x.com/2020/11/30/DR23FO.png" alt="logo" width="80" height="52">
+          <img :src="logoUrl" alt="logo" width="88" height="50">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
